@@ -20,7 +20,7 @@ jobs:
 stages:
   simple_fail:
     requires: [~hub]
-    jobs: [a, b, c]
+    jobs: [a, b, c, d]
     description: First stage
     teardown:
       image: node:lts
