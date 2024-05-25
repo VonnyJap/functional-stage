@@ -20,3 +20,7 @@ stages:
     requires: [~hub]
     jobs: [a, b, c]
     description: First stage
+    teardown:
+      image: node:lts
+      steps:
+        - init: echo 'teardown'
