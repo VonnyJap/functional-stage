@@ -5,12 +5,12 @@ shared:
 jobs:
   hub:
     requires: [~commit, ~pr]
-  # a:
-  #   requires: []
-  # b:
-  #   requires: [~a]
-  c:
+  a:
     requires: []
+  b:
+    requires: [~a]
+  c:
+    requires: [~b]
     steps:
     - echo: exit 1;
   target:
@@ -18,9 +18,9 @@ jobs:
 stages:
   simple_fail:
     requires: [~hub]
-    jobs: [c]
+    jobs: [a, b, c]
     description: First stage
-    teardown:
-      image: node:lts
-      steps:
-        - init: echo 'teardown'
+    # teardown:
+    #   image: node:lts
+    #   steps:
+    #     - init: echo 'teardown'
